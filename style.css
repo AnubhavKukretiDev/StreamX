@@ -1,0 +1,270 @@
+:root {
+  --bg: #0b0b0b;
+  --surface: #141414;
+  --primary: #e50914;
+  --text: #ffffff;
+  --text-muted: #aaa;
+
+  --radius: 10px;
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+  z-index: 100;
+}
+
+.nav__logo {
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.nav__menu {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.nav__menu li {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.nav__menu li:hover {
+  color: var(--text-muted);
+}
+
+.hero {
+  height: 90vh;
+  background: 
+    linear-gradient(to top, #0b0b0b, transparent),
+    url('https://picsum.photos/1600/900');
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+}
+
+.hero__content {
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-size: 4rem;
+}
+
+.hero p {
+  margin: 15px 0;
+  color: var(--text-muted);
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: var(--transition);
+}
+
+.btn--primary {
+  background: var(--text);
+  color: black;
+}
+
+.btn--secondary {
+  background: rgba(109,109,110,0.7);
+  color: white;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.rows {
+  padding: 20px 50px;
+}
+
+.row {
+  margin-bottom: 40px;
+}
+
+.row h2 {
+  margin-bottom: 10px;
+}
+
+.row__track {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 10px;
+}
+
+.row__track::-webkit-scrollbar {
+  display: none;
+}
+
+.card {
+  min-width: 250px;
+  height: 140px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+  scroll-snap-align: start;
+  transition: var(--transition);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card:hover {
+  transform: scale(1.2);
+  z-index: 10;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .nav {
+    padding: 15px 20px;
+  }
+
+  .rows {
+    padding: 10px 20px;
+  }
+}
+
+.faq {
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.faq__title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.faq__item {
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background: #2d2d2d;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.faq__question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.faq__question:hover {
+  background: #3a3a3a;
+}
+
+.faq__answer {
+  height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  color: #ccc;
+}
+
+.icon {
+  font-size: 20px;
+  transition: transform 0.4s ease;
+}
+
+.faq__cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.faq__cta p {
+  margin-bottom: 20px; 
+  font-size: 16px;
+  color: #ccc;
+}
+
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: #25D366;
+  color: white;
+  font-size: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  z-index: 999;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+  animation: pulse 2.5s infinite;
+}
